@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Simple Closure</title>
+        <script>
+            function noClosureMilliseconds(){
+                'use strict';
+                var date = new Date();
+                return date.getMilliseconds();
+            }
+            function closureMilliseconds(){
+                'use strict';
+                var date = new Date();
+                return function(){
+                    return date.getMilliseconds();
+                }
+            }
+            window.onload = function () {
+                'use strict';
+                var noClosureResult = document.getElementById('noClosure');
+                noClosureResult.innerHTML = "No Closure Milliseconds = " + noClosureMilliseconds();
+                setTimeout(function () {
+                    noClosureResult.innerHTML += "<br />No Closure Milliseconds after hold 500 milliseconds = " + noClosureMilliseconds();// when make refresh to page we find 500 milliseconds difference between value one and value two
+                }, 500);
+                
+                var closureResult = document.getElementById('closure');
+                var outPut = closureMilliseconds();
+                closureResult.innerHTML = "Closure Milliseconds = " + outPut();
+                setTimeout(function(){
+                    closureResult.innerHTML += "<br />Closure Milliseconds after hold 500 milliseconds = " + outPut();
+                }, 500);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>A Simple Closure Example</h1>
+        <p id="noClosure"></p><!-- to display the result without closure -->
+        <p id="closure"></p><!-- to display the result with closure -->
+    </body>
+</html>
