@@ -2,20 +2,21 @@
     <head>
         <title>Prototype Pattern</title>
         <script>
-            window.onload = function () {
-                'use strict';
-                var Cal = new Calculator('output');
-                Cal.add(5,8);
-            };
-            var Calculator = function(output){ // create constructor
+            var myNameSpace = myNameSpace || {}; // create namespace and initiate it if not initiate
+            myNameSpace.Calculator = function(output){ // create constructor
                 'use strict';
                 this.outPut = document.getElementById(output);
             };
-            Calculator.prototype = { // create functions of class
+            myNameSpace.Calculator.prototype = { // create functions of class
                 add: function(x, y){
                     var val = x + y;
                     this.outPut.innerHTML = x + ' + ' + y + ' = ' + val;
                 }
+            };
+            window.onload = function () {
+                'use strict';
+                var Cal = new myNameSpace.Calculator('output');
+                Cal.add(5,8);
             };
         </script>
     </head>
