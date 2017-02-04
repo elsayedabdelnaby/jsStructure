@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script>
+            // simple module for calculator
+            var myNameSpace = myNameSpace || {};
+            var Calculator = function (item_id) {
+                'use strict';
+                //private members
+                var outPut = document.getElementById(item_id);
+                
+                return {
+                    //public members
+                    add: function (x, y) {
+                        var result =  x + y;
+                        outPut.innerHTML += "Add = " + result;
+                    },
+                    sub: function (x, y) {
+                        var result = x - y;
+                        outPut.innerHTML += "<br />Subtract = " + result;
+                    },
+                    multiply: function (x, y) {
+                        var result = x * y;
+                        outPut.innerHTML += "<br />Multiplication = " + result;
+                    }
+                };
+            };
+            
+            window.onload = function () {
+                var cal = new Calculator('output');
+                cal.add(4, 5);
+                cal.sub(4, 5);
+                cal.multiply(4, 5);
+            };
+        </script>
+    </head>
+    <bod>
+        <h1>Module Pattern Example</h1>
+        <p id="output"></p>
+    </bod>
+</html>
