@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script>
+            var myNameSpace = myNameSpace || {};
+            myNameSpace.Calculator = function (item_id) {
+                'use strict';
+                //private members
+                var result = document.getElementById(item_id),
+                    add = function (x, y) {
+                        result.innerHTML = "Add = " + (x + y);
+                    },
+                    sub = function (x, y) {
+                        result.innerHTML += "<br /> Subtraction = " + (x - y);
+                    };
+                //public members
+                return {
+                    doAdd:add,
+                    doSub:sub
+                };
+            };
+            
+            window.onload = function () {
+                'use strict';
+                var cal = new myNameSpace.Calculator('output');
+                cal.doAdd(7, 9);
+                cal.doSub(9, 7);
+            };
+        </script>
+    </head>
+    <body>
+        <h1>Revealing Module Pattern Example</h1>
+        <p id="output"></p>
+    </body>
+</html>
