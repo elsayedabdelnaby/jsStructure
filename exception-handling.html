@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script>
+            function getName() {
+                'use strict';
+                var sName = window.prompt("Enter a name:", "");
+                if (!sName || sName.length === 0) {
+                    throw new Error("Name was not in a permitted");
+                }
+                window.alert("You entered: " + sName);
+            }
+
+            function testException() {
+                'use strict';
+                try {
+                    getName();
+                } catch (e) {
+                    window.alert(e.name + ": " + e.message);
+                }
+            }
+            window.onload = testException;
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
