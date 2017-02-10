@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script>
+        function onLinkClicked(e) {
+            alert("you clicked the link");
+        }
+
+        function setUpClickHandler() {
+            document.getElementById('clickLink').addEventListener("click", onLinkClicked, false);
+            document.getElementById('checkBox').addEventListener('click', removeClickHandler, false);
+        }
+
+        function removeClickHandler() {
+            if (document.getElementById('checkBox').checked) {
+                document.getElementById('clickLink').removeEventListener("click", onLinkClicked, false);
+            } else {
+                setUpClickHandler();
+            }
+        }
+
+        window.addEventListener("load", setUpClickHandler, false);
+    </script>
+</head>
+
+<body>
+    <a href="#" title="ClickMe" id="clickLink">Click Me!</a>
+    <p>
+        <input type="checkbox" id="checkBox">Remove Click
+    </p>
+</body>
+
+</html>
