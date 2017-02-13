@@ -2,6 +2,7 @@
 
 <head>
     <script type="text/javascript">
+        // super class
         function Rectangle(w, h) { // create class rectangle and it's constructor
             // creating private field
             this.width = w;
@@ -32,12 +33,29 @@
             'use strict';
             return (this.area() - oRect.area());
         }
+
+        // create subclass
+        function DepthRectangle(w, h, d) {
+            'use strict';
+            // call constructor of the parent
+            Rectangle.call(this, w, h);
+            this.depth = d;
+        }
+        // bind the child to its parent
+        DepthRectangle.prototype = new Rectangle();
+        DepthRectangle.prototype.constructor = DepthRectangle;
+        DepthRectangle.prototype.volume = function () {
+            'use strict';
+            return this.area() * this.depth;
+        }
+        DepthRectangle.prototype.toString = function () {
+            'use strict';
+            return "DepthRectangle of width: " + this.width + "& height: " + this.height + "& depth: " + this.depth;
+        }
         var myRect1 = new Rectangle(4, 10),
-            myRect2 = new Rectangle(4, 11),
+            myDepthRect = new DepthRectangle(4, 11, 7),
             myRect3 = new Rectangle(4, 10);
-        alert(myRect1.compareTo(myRect2));
-        alert(myRect1.equals(myRect2));
-        alert(myRect1.toString());
+        alert(myDepthRect.toString());
     </script>
 </head>
 
