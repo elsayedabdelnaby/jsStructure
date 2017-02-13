@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        function Rectangle(w, h) { // create class rectangle and it's constructor
+            // creating private field
+            this.width = w;
+            this.height = h;
+        }
+
+        Rectangle.prototype.area = function () {
+            'use strict';
+            return this.width * this.height;
+        }
+        Rectangle.prototype.perimeter = function () {
+            'use strict';
+            return (this.width + this.height) * 2;
+        }
+        var myRect = new Rectangle(4, 10);
+        alert(myRect.area());
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
