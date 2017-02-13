@@ -16,8 +16,28 @@
             'use strict';
             return (this.width + this.height) * 2;
         }
-        var myRect = new Rectangle(4, 10);
-        alert(myRect.area());
+        Rectangle.prototype.toString = function () {
+            'use strict';
+            return "Rectangle of width:" + this.width + "& height:" + this.height;
+        }
+        Rectangle.prototype.valueOf = function () {
+            'use strict';
+            return this.area();
+        }
+        Rectangle.prototype.equals = function (oRect) {
+            'use strict';
+            return (this.width == oRect.width && this.height == oRect.height);
+        }
+        Rectangle.prototype.compareTo = function (oRect) {
+            'use strict';
+            return (this.area() - oRect.area());
+        }
+        var myRect1 = new Rectangle(4, 10),
+            myRect2 = new Rectangle(4, 11),
+            myRect3 = new Rectangle(4, 10);
+        alert(myRect1.compareTo(myRect2));
+        alert(myRect1.equals(myRect2));
+        alert(myRect1.toString());
     </script>
 </head>
 
